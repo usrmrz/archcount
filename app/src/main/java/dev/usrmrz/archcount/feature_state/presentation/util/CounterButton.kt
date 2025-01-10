@@ -13,7 +13,7 @@ fun CounterButton(onClick: () -> Unit, buttonText: String, enabled: Boolean = tr
     return Button(
         onClick = onClick,
         modifier = Modifier
-            .padding(top = 16.dp)
+            .padding(top = 24.dp)
             .defaultMinSize(minWidth = minWidth.dp),
         enabled = enabled
     ) { Text(buttonText) }

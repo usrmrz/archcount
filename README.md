@@ -1,2 +1,2 @@
 # Kotlin Android Clean Architecture Samples
-main branch
+First step - all in one file

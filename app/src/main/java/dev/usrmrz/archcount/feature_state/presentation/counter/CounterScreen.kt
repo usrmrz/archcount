@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +22,7 @@ import dev.usrmrz.archcount.feature_state.presentation.util.getCounterText
 @Composable
 fun CounterScreen() {
 
-    var count by remember { mutableIntStateOf(0) }
+    var count by rememberSaveable { mutableIntStateOf(0) }
 
     Column(
         modifier = Modifier
@@ -33,6 +33,7 @@ fun CounterScreen() {
         Text(
             text = getCounterText(count),
             fontSize = 24.sp,
+            lineHeight = 28.sp,
             fontWeight = FontWeight.Bold,
         )
         Row(
