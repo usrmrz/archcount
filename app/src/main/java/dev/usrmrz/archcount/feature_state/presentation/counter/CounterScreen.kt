@@ -7,22 +7,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.usrmrz.archcount.feature_state.presentation.util.CounterButton
 import dev.usrmrz.archcount.feature_state.presentation.util.getCounterText
 
 @Composable
-fun CounterScreen() {
+fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
 
-    var count by remember { mutableIntStateOf(0) }
+    val count by viewModel.count.collectAsState()
 
     Column(
         modifier = Modifier
@@ -33,6 +32,7 @@ fun CounterScreen() {
         Text(
             text = getCounterText(count),
             fontSize = 24.sp,
+            lineHeight = 28.sp,
             fontWeight = FontWeight.Bold,
         )
         Row(
@@ -41,8 +41,8 @@ fun CounterScreen() {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            CounterButton({ count++ }, "ADD", count < 10)
-            CounterButton({ count = 0 }, "CLEAR")
+            CounterButton({ viewModel.increment() }, "ADD", count < 10)
+            CounterButton({ viewModel.reset() }, "CLEAR")
         }
     }
 }

@@ -3,7 +3,9 @@ activityCompose = "1.9.3"
 agp = "8.8.0"
 autonomousapps = "2.6.1"
 composeBom = "2024.12.01"
+coroutines = "1.10.1"
 kotlin = "2.1.0"
+lifecycle = "2.8.7"
 
 junitVersion = "1.2.1"
 junit = "4.13.2"
@@ -15,9 +17,10 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime" }
-androidx-runtime-saveable = { group = "androidx.compose.runtime", name = "runtime-saveable" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
@@ -25,6 +28,7 @@ androidx-ui-text = { group = "androidx.compose.ui", name = "ui-text" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-ui-unit = { group = "androidx.compose.ui", name = "ui-unit" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,13 +42,19 @@ compose = [
     "androidx-foundation-layout",
     "androidx-material3",
     "androidx-runtime",
-    "androidx-runtime-saveable",
     "androidx-ui",
     "androidx-ui-graphics",
     "androidx-ui-text",
     "androidx-ui-tooling",
     "androidx-ui-tooling-preview",
     "androidx-ui-unit",
+]
+lifecycle = [
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-lifecycle",
+]
+coroutines = [
+    "kotlinx-coroutines-core"
 ]
 android-test = [
     "androidx-junit",

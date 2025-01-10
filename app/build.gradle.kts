@@ -12,6 +12,7 @@ android {
     defaultConfig {
         applicationId = "dev.usrmrz.archcount"
         minSdk = 26
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -44,6 +45,8 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.coroutines)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.bundles.android.test)
