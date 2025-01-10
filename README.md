@@ -1,2 +1,2 @@
 # Kotlin Android Clean Architecture Samples
-main branch
+Second step - State hoisting
