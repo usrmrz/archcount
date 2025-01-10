@@ -1,4 +1,4 @@
-package dev.usrmrz.archcount.state_feature.presentation.ui.theme
+package dev.usrmrz.archcount.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

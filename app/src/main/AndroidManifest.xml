@@ -11,11 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArchitectureOfCounting"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
-            android:name=".state_feature.presentation.MainActivity"
+            android:name=".feature_state.presentation.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.ArchitectureOfCounting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

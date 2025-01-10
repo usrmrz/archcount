@@ -1,4 +1,4 @@
-package dev.usrmrz.archcount.state_feature.presentation.ui.theme
+package dev.usrmrz.archcount.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
