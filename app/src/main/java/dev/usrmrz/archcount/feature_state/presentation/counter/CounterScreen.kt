@@ -14,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import dev.usrmrz.archcount.feature_state.presentation.util.CounterButton
 import dev.usrmrz.archcount.feature_state.presentation.util.getCounterText
 
 @Composable
-fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
+fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
 
     val count by viewModel.count.collectAsState()
 

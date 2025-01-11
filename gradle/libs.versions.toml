@@ -1,10 +1,15 @@
 [versions]
 activityCompose = "1.9.3"
 agp = "8.8.0"
+androidxHilt = "1.2.0"
 autonomousapps = "2.6.1"
 composeBom = "2024.12.01"
 coroutines = "1.10.1"
+fragment = "1.8.5"
+hilt = "2.54"
+javax = "1"
 kotlin = "2.1.0"
+ksp = "2.1.0-1.0.29"
 lifecycle = "2.8.7"
 
 junitVersion = "1.2.1"
@@ -17,7 +22,9 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "lifecycle" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-runtime = { group = "androidx.compose.runtime", name = "runtime" }
@@ -28,6 +35,15 @@ androidx-ui-text = { group = "androidx.compose.ui", name = "ui-text" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-ui-unit = { group = "androidx.compose.ui", name = "ui-unit" }
+
+androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidxHilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHilt" }
+dagger = { group = "com.google.dagger", name = "dagger", version.ref = "hilt" }
+hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
+javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax" }
+
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -50,11 +66,24 @@ compose = [
     "androidx-ui-unit",
 ]
 lifecycle = [
+    "androidx-fragment",
     "androidx-lifecycle-viewmodel-compose",
+    "androidx-lifecycle-viewmodel-savedstate",
     "androidx-lifecycle",
 ]
 coroutines = [
-    "kotlinx-coroutines-core"
+    "kotlinx-coroutines-core",
+]
+dagger-hilt = [
+    "androidx-hilt-navigation-compose",
+    "dagger",
+    "hilt-android-core",
+    "hilt-core",
+    "javax-inject",
+]
+ksp = [
+    "androidx-hilt-compiler",
+    "hilt-android-compiler",
 ]
 android-test = [
     "androidx-junit",
@@ -65,6 +94,9 @@ android-test = [
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 autonomousapps = { id = "com.autonomousapps.dependency-analysis", version.ref = "autonomousapps" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
 

@@ -1,19 +1,22 @@
 package dev.usrmrz.archcount.feature_state.presentation.counter
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.usrmrz.archcount.feature_state.data.repository.CounterRepository
+import javax.inject.Inject
 
-class CounterViewModel : ViewModel() {
+@HiltViewModel
+class CounterViewModel @Inject constructor (
+    private val repository: CounterRepository
+) : ViewModel() {
 
-    private val _count = MutableStateFlow(0)
-    val count: StateFlow<Int> = _count
+    val count = repository.count
 
     fun increment() {
-        _count.value++
+        repository.increment()
     }
 
     fun reset() {
-        _count.value = 0
+        repository.reset()
     }
 }

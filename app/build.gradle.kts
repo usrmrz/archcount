@@ -1,8 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.autonomousapps)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.autonomousapps)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -47,6 +49,8 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.lifecycle)
     implementation(libs.bundles.coroutines)
+    implementation(libs.bundles.dagger.hilt)
+    ksp(libs.bundles.ksp)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.bundles.android.test)
