@@ -2,7 +2,7 @@ package dev.usrmrz.archcount.feature_state.presentation.counter
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.usrmrz.archcount.feature_state.data.repository.CounterRepository
+import dev.usrmrz.archcount.feature_state.domain.repository.CounterRepository
 import javax.inject.Inject
 
 @HiltViewModel
