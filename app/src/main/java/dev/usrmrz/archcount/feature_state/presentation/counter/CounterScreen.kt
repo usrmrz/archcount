@@ -16,12 +16,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import dev.usrmrz.archcount.feature_state.data.repository.CounterRepositoryImpl
 import dev.usrmrz.archcount.feature_state.data.repository.MockCounterRepository
 import dev.usrmrz.archcount.feature_state.domain.repository.CounterRepository
+import dev.usrmrz.archcount.feature_state.domain.use_case.CountUseCases
+import dev.usrmrz.archcount.feature_state.domain.use_case.IncrementCountUseCase
+import dev.usrmrz.archcount.feature_state.domain.use_case.ResetCountUseCase
 import dev.usrmrz.archcount.feature_state.presentation.util.CounterButton
 import dev.usrmrz.archcount.feature_state.presentation.util.getCounterText
 import dev.usrmrz.archcount.ui.theme.ArchitectureOfCountingTheme
-import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
@@ -55,13 +58,14 @@ fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
 @Preview(name = "Empty State", showBackground = true)
 @Composable
 fun EmptyCounterScreenPreview() {
+    val repository: CounterRepository = CounterRepositoryImpl()
+    val useCases = CountUseCases(
+        increment = IncrementCountUseCase(repository),
+        reset = ResetCountUseCase(repository)
+    )
     ArchitectureOfCountingTheme {
         CounterScreen(
-            viewModel = CounterViewModel(object : CounterRepository {
-                override val count = MutableStateFlow(0)
-                override fun increment() {}
-                override fun reset() {}
-            })
+            viewModel = CounterViewModel(useCases, repository)
         )
     }
 }
@@ -69,9 +73,14 @@ fun EmptyCounterScreenPreview() {
 @Preview(name = "Filled State", showBackground = true)
 @Composable
 fun FilledCounterScreenPreview() {
+    val mockRepository = MockCounterRepository()
+    val useCases = CountUseCases(
+        increment = IncrementCountUseCase(mockRepository),
+        reset = ResetCountUseCase(mockRepository)
+    )
     ArchitectureOfCountingTheme {
         CounterScreen(
-            viewModel = CounterViewModel(MockCounterRepository())
+            viewModel = CounterViewModel(useCases, MockCounterRepository())
         )
     }
 }
