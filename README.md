@@ -1,2 +1,2 @@
 # Kotlin Android Clean Architecture Samples
-Sixth step - Meet UseCases
+Sixth step - Create UseCases

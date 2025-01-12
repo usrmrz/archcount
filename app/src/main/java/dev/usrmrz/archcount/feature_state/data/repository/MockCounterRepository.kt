@@ -16,4 +16,8 @@ class MockCounterRepository : CounterRepository {
     override fun reset() {
         _count.value = 0
     }
+
+    fun setCount(value: Int) {
+        _count.value = value
+    }
 }

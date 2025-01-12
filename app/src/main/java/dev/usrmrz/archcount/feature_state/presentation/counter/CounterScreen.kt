@@ -16,9 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import dev.usrmrz.archcount.feature_state.data.repository.CounterRepositoryImpl
 import dev.usrmrz.archcount.feature_state.data.repository.MockCounterRepository
-import dev.usrmrz.archcount.feature_state.domain.repository.CounterRepository
 import dev.usrmrz.archcount.feature_state.domain.use_case.CountUseCases
 import dev.usrmrz.archcount.feature_state.domain.use_case.IncrementCountUseCase
 import dev.usrmrz.archcount.feature_state.domain.use_case.ResetCountUseCase
@@ -49,8 +47,8 @@ fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            CounterButton({ viewModel.increment() }, "ADD", count < 10)
-            CounterButton({ viewModel.reset() }, "CLEAR")
+            CounterButton({ viewModel.increment() }, "Add", count < 10)
+            CounterButton({ viewModel.reset() }, "Clear")
         }
     }
 }
@@ -58,7 +56,7 @@ fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
 @Preview(name = "Empty State", showBackground = true)
 @Composable
 fun EmptyCounterScreenPreview() {
-    val repository: CounterRepository = CounterRepositoryImpl()
+    val repository = MockCounterRepository().apply { setCount(0) }
     val useCases = CountUseCases(
         increment = IncrementCountUseCase(repository),
         reset = ResetCountUseCase(repository)
@@ -80,7 +78,7 @@ fun FilledCounterScreenPreview() {
     )
     ArchitectureOfCountingTheme {
         CounterScreen(
-            viewModel = CounterViewModel(useCases, MockCounterRepository())
+            viewModel = CounterViewModel(useCases, mockRepository)
         )
     }
 }
