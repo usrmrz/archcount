@@ -15,6 +15,18 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 
+abstract class RepositoryModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindCounterRepository(
+        impl: CounterRepositoryImpl
+    ): CounterRepository
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+
 object UseCasesModule {
 
     @Provides
