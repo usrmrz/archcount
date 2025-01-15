@@ -22,6 +22,7 @@ object AppModule {
     }
 
     @Provides
+    @Singleton
     fun provideCountUseCases(repository: CounterRepository): CountUseCases {
         return CountUseCases(
             increment = IncrementCountUseCase(repository),
