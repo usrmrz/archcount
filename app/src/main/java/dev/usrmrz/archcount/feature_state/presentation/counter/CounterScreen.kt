@@ -52,35 +52,3 @@ fun CounterScreen(viewModel: CounterViewModel = hiltViewModel()) {
         }
     }
 }
-
-@Preview(name = "Empty State", showBackground = true)
-@Composable
-fun EmptyCounterScreenPreview() {
-
-    val mockRepository = MockCounterRepository().apply { setCount(0) }
-    val useCases = CounterUseCases(
-        increment = IncrementCounterUseCase(mockRepository),
-        reset = ResetCounterUseCase(mockRepository)
-    )
-    ArchitectureOfCountingTheme {
-        CounterScreen(
-            viewModel = CounterViewModel(useCases, mockRepository)
-        )
-    }
-}
-
-@Preview(name = "Filled State", showBackground = true)
-@Composable
-fun FilledCounterScreenPreview() {
-
-    val mockRepository = MockCounterRepository()
-    val useCases = CounterUseCases(
-        increment = IncrementCounterUseCase(mockRepository),
-        reset = ResetCounterUseCase(mockRepository)
-    )
-    ArchitectureOfCountingTheme {
-        CounterScreen(
-            viewModel = CounterViewModel(useCases, mockRepository)
-        )
-    }
-}
